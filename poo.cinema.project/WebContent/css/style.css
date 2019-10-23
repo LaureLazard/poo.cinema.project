@@ -1,0 +1,71 @@
+html{ height: 100%;}
+body {
+	font-family: 'Raleway';
+	transition: background-color .5s;
+	background-color: teal;
+	background-size: inherit;
+	overflow:hidden;
+	text-decoration: none;
+	height: 100%;
+}
+#overlay, #overlay2, #overlay3{
+  position: fixed !important;
+  width: 100% !important;
+  height: 100% !important;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1 !important;
+  cursor: pointer !important;
+}
+#overlay
+{
+  background-image: linear-gradient(45deg, rgba(15, 32, 39, 0.795) , rgba(32, 58, 67, 0.795) ,  #2c5364e1);
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#4f99008e,endColorstr=#4f9900a2);
+}
+#overlay2
+{
+  background-color: rgb(114, 123, 145, 0.87) !important;
+}
+#overlay3
+{
+  background-color: rgb(235, 238, 247) !important;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Float four columns side by side */
+.column {
+  float: left;
+  width: 30%;
+  padding: 0 30px;
+  margin: 2em 1em 0.5em;
+}
+
+/* Remove extra left and right margins, due to padding */
+.row {margin: 0 -5px;}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive columns */
+@media screen and (max-width: 600px) {
+  .column {
+    width: 100%;
+    display: block;
+    margin-bottom: 20px;
+  }
+}
+
+#addNewFilm:hover {
+  cursor:pointer
+}
+
+</style>

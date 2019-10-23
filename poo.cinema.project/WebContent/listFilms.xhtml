@@ -1,0 +1,54 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://xmlns.jcp.org/jsf/core"
+    xmlns:ui="http://java.sun.com/jsf/facelets">
+     
+<h:head>
+    <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1" http-equiv="X-UA-Conpatible" />
+    <link rel="stylesheet" type="text/css" href="./lib/bootstrap/css/bootstrap.min.css" /> 
+    <link rel="stylesheet" type="text/css" href="./css/style.css" />
+    <title>Home</title>
+    <style type="text/css">
+		body{
+			overflow-y:scroll !important;
+		}
+        .btnSpace {
+            margin: 17px;
+        }   
+        h1
+        {
+        	color: #48ecc9;
+        }   
+    </style>
+</h:head>
+<h:body>
+	<div id="overlay"></div>
+    <center><h1><h:outputText value="Home"/></h1></center>
+    <h:form id="filmForm">
+    <div class="row">
+        <ui:repeat var="f" value="#{film.getFilms()}">
+	        <div class="column">
+	         <div class="card" style="width: 30rem;">
+			  <div class="embed-responsive embed-responsive-16by9">
+			   <iframe class="embed-responsive-item" src="#{f.l_trailer}" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"></iframe>
+			  </div>
+			 <div class="card-body">
+			 	<center><h2><h:outputText value="#{f.title}(#{f.year})"/></h2></center>
+			   <p class="card-text">#{f.synopsis}</p>
+			   <h5 class="mpaa">#{f.mpaa}</h5>
+			   <a href="#" class="btn btn-primary">See more</a>
+			   
+			  </div>
+			</div>
+	       </div>
+		</ui:repeat>
+    
+    
+    </div>
+
+
+
+    </h:form>
+</h:body>
+</html>

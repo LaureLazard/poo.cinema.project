@@ -1,0 +1,64 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://xmlns.jcp.org/jsf/core"
+    xmlns:ui="http://java.sun.com/jsf/facelets">
+     
+<h:head>
+    <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1" http-equiv="X-UA-Conpatible" />
+    <link rel="stylesheet" type="text/css" href="./lib/bootstrap/css/bootstrap.min.css" /> 
+    <link rel="stylesheet" type="text/css" href="./css/style.css" />
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <title>Backend</title>
+    <style type="text/css">
+        .btnSpace {
+            margin: 17px;
+        }  
+        h1, h2
+        {
+        	color: #48ecc9;
+        }   
+    </style>
+</h:head>
+<h:body>
+	<div id="overlay"></div>
+    <center><h1><h:outputText value="List of films"/></h1></center>
+    <h:form id="filmForm">
+    	<table class="table">
+    		<tr>
+    			<th><h1>Title</h1></th>
+    			<th><h1>Year</h1></th>
+    			<th><h1>MPAA</h1></th>
+    			<th><h1>Duration</h1></th>
+    			<th><h1>Delete/Edit</h1></th>
+    		</tr>
+    		<tbody>
+	    		<ui:repeat var="f" value="#{film.getFilms()}">
+	   				<tr>
+		    			<td><h2><a href="#{f.l_trailer}" target="_blank">#{f.title}</a></h2></td>
+		    			<td><h2>#{f.year}</h2></td>
+		    			<td><h2>#{f.mpaa}</h2></td>
+		    			<td><h2>#{f.duration}</h2></td>
+		    			<td><h:commandButton action="#{film.deleteFilm(f.id)}" value="Delete" class="btn btn-danger" /></td>
+		    			<td><h:commandButton action="#{film.editFilmRecord(f.id)}" value="Edit" class="btn btn-warning" /></td>
+		    		</tr>
+
+	    		</ui:repeat>
+    		</tbody>
+    	</table>
+		<center><h1 id="addNewFilm"><i class="fas fa-plus"></i></h1></center> <br></br> <h2><i class="fas fa-trash-alt"></i> <i class="fas fa-edit"></i></h2>
+    </h:form>
+    
+    <script type="text/javascript" 
+  		src="./lib/jquery/jquery.min.js">
+	</script>
+    
+    <script>
+	    $(document).ready(function() { 
+	    	$( "#addNewFilm" ).click(function() {
+	    		window.location.href = "./addFilm.xhtml"
+	    });
+	    })
+    </script>
+</h:body>
+</html>
