@@ -13,7 +13,7 @@ import java.util.Map;
  
 import javax.faces.context.FacesContext;
 
-import project.cinema.poo.DbConn;
+import controllers.DbConn;
 import project.cinema.poo.Film;
 import project.cinema.poo.FilmBean;
 
@@ -80,7 +80,7 @@ public class DBO {
     		DbConn lc = new DbConn();
     		connObj = lc.getLocalConnection();
     		stmtObj= connObj.createStatement();
-            pstmt = connObj.prepareStatement("update student_record set f_title=?, f_synopsis=?, f_trailer=?, f_category=?, f_mpaa=?, f_year=?, f_duration=?, f_poster=? where student_id=?");    
+            pstmt = connObj.prepareStatement("update tbl_films set f_title=?, f_synopsis=?, f_trailer=?, f_category=?, f_mpaa=?, f_year=?, f_duration=?, f_poster=? where f_id=?");    
             pstmt.setString(1,filmToUpdate.getTitle());  
             pstmt.setString(2,filmToUpdate.getSynopsis());  
             pstmt.setString(3,filmToUpdate.getL_trailer());  
@@ -124,16 +124,17 @@ public class DBO {
     		DbConn lc = new DbConn();
     		connObj = lc.getLocalConnection(); 
     		stmtObj= connObj.createStatement();
-    		result = stmtObj.executeQuery("select * from student_record where student_id = "+filmId);    
+    		result = stmtObj.executeQuery("select * from tbl_films where f_id = '"+filmId+"'");    
             if(result != null) {
             	result.next();
-                editRecord.setId(result.getString("student_id"));
+                editRecord.setId(result.getString("f_id"));
                 editRecord.setTitle(result.getString("f_title"));
                 editRecord.setSynopsis(result.getString("f_synopsis"));
                 editRecord.setL_trailer(result.getString("f_trailer"));
                 editRecord.setCategory(result.getString("f_category"));
                 editRecord.setMpaa(result.getString("f_mpaa")); 
                 editRecord.setYear(result.getString("f_year")); 
+                editRecord.setDuration(result.getString("f_duration"));
             }
             sessionMapObj.put("editRecordObj", editRecord);
             connObj.close();
