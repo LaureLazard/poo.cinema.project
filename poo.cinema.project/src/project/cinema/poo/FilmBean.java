@@ -15,15 +15,7 @@ import controllers.DBO;
 
 public class FilmBean {
 
-	public String title;
-	private String synopsis;
-	private String duration;
-	private String l_trailer;
-	private String category;
-	private String mpaa;
-	private String year;
-	private String l_poster;
-	private String id;
+	public String id, title, synopsis, duration, l_trailer, category, mpaa, year, l_poster;
 	public List<Film> films = new ArrayList<Film>();
 
 	//Recuperer la liste des films
@@ -134,7 +126,6 @@ public class FilmBean {
 	public void setYear(String year) {
 		this.year = year;
 	}
-	
 	
 	
 
